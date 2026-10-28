@@ -16,7 +16,6 @@ migrate_working_dir/
 .env
 .env.*
 *.env
-!.env.example
 
 # IntelliJ / Android Studio related
 *.iml
@@ -36,6 +35,12 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+
+# Generated files (build_runner, Freezed, AutoRoute, Injectable)
+*.freezed.dart
+*.g.dart
+*.gr.dart
+*.config.dart
 
 # Android Studio / Gradle artifacts
 /android/app/debug
