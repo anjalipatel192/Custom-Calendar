@@ -1,8 +1,13 @@
-import 'package:custom_calender/app_widget.dart';
-import 'package:custom_calender/injection.dart';
-import 'package:custom_calender/restart_app.dart';
 import 'package:flutter/material.dart';
 
+import 'app_widget.dart';
+import 'injection.dart';
+import 'restart_app.dart';
+
+/// Application entry point.
+///
+/// Initializes Flutter engine bindings, configures dependency injection via GetIt,
+/// and mounts the root application widget wrapped in a restart provider.
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();

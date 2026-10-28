@@ -1,21 +1,31 @@
-class CalenderDays {
-  int? date;
-  String? day;
-  int? month;
+import '../entities/calendar_day.dart';
 
-  CalenderDays({this.date, this.day, this.month});
+/// Data transfer model for calendar day items serialized from JSON.
+///
+/// Implements [CalendarDay] domain entity with robust JSON parsing.
+class CalendarDayModel extends CalendarDay {
+  const CalendarDayModel({
+    required super.date,
+    required super.day,
+    required super.month,
+    super.year = 2025,
+  });
 
-  CalenderDays.fromJson(Map<String, dynamic> json) {
-    date = json['date'];
-    day = json['day'];
-    month = json['month'];
+  /// Factory constructor to deserialize a [CalendarDayModel] from a JSON map.
+  factory CalendarDayModel.fromJson(Map<String, dynamic> json) {
+    return CalendarDayModel(
+      date: json['date'] as int? ?? 1,
+      day: json['day'] as String? ?? 'Monday',
+      month: json['month'] as int? ?? 1,
+      year: json['year'] as int? ?? 2025,
+    );
   }
 
+  /// Serializes the model into a standard JSON map.
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['date'] = this.date;
-    data['day'] = this.day;
-    data['month'] = this.month;
-    return data;
+    return {'date': date, 'day': day, 'month': month, 'year': year};
   }
 }
+
+/// Backwards compatibility alias for legacy references.
+typedef CalenderDays = CalendarDayModel;
